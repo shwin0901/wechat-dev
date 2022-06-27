@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="container">
+  <image class="indexImg" src="/static/imgae/icon.ico"></image>
+  <text>用户</text>
+
+  <view>
+    <button>hello world</button>
+  </view>
+</view>
