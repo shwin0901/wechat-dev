@@ -1,9 +1,13 @@
 <!--index.wxml-->
 <view class="container">
-  <image class="indexImg" src="/static/imgae/icon.ico"></image>
-  <text>用户</text>
+  <view wx:if="{{userInfo.avatarUrl}}" class="userInfo">
+    <image class="indexImg" src="{{userInfo.avatarUrl}}"></image>
+    <text>{{userInfo.nickName}}</text>
+  </view>
+
+  <button wx:else bindtap="getUserProfile">获取用户信息</button>
 
   <view>
-    <button>hello world</button>
+    <button catchtap="handleClick">hello world</button>
   </view>
 </view>

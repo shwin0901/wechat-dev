@@ -3,3 +3,9 @@
   height: 120rpx;
   margin: 48rpx 0;
 }
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,48 +1,109 @@
-// index.js
-// 获取应用实例
-const app = getApp()
+// 
 
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    motto: 'Hello World',
+    msg: '单项数据绑定',
     userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
   },
-  // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
+
+  //页面跳转
+  handleClick(e) {
+    wx.redirectTo({
+      url: '/pages/home/home',
     })
   },
-  onLoad() {
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      })
-    }
-  },
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+
+  // 弹窗，获取用户信息
+  getUserProfile() {
     wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      desc: '123123123',
       success: (res) => {
-        console.log(res)
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+          userInfo: res.userInfo, 
         })
+        //将用户信息存储在storage里
+        wx.setStorageSync('userInfo', res.userInfo)
+      },
+      fail: (e) => {
+        console.log('error', e)
       }
     })
   },
-  getUserInfo(e) {
-    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-    console.log(e)
+
+  //获取用户存储信息
+  getStorageUserInfo() {
+    try{
+      const userInfo = wx.getStorageSync('userInfo')
+      if(userInfo) {
+        this.setData({
+          userInfo
+        })
+      }
+    } catch(err) {
+      console.log('获取用户存储信息失败', err)
+    }
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      msg: '改变后的数据'
     })
+    this.getStorageUserInfo()
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面显示 会执行多次
+   */
+  onShow: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    
   }
 })
