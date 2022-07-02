@@ -29,7 +29,7 @@
   width: 64rpx;
   height: 64rpx;
   border-radius: 50%;
-  background-color: chocolate;
+  background-color: #e26514;
   line-height: 64rpx;
   text-align: center;
   color: white;
@@ -48,26 +48,7 @@
   border-top: 1rpx solid #f5f5f5;
 }
 
-.homeSongList .SongHeader {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 24rpx;
-}
 
-.homeSongList .SongHeader .left {
-  font-weight: 400;
-}
-
-.homeSongList .SongHeader .right {
-  width: 100rpx;
-  height: 42rpx;
-  border-radius: 24rpx;
-  border: 1rpx solid rgb(207, 207, 207);
-  text-align: center;
-  line-height: 42rpx;
-  font-size: 24rpx;
-  color: rgb(54, 54, 54);
-}
 
 .SongContent {
   display: flex;
@@ -104,4 +85,51 @@
   -webkit-box-orient: vertical; 
   /* 设置多行行树 */
   -webkit-line-clamp: 2;
+}
+
+
+.topList {
+  padding: 20rpx 0;
+}
+
+.topListSwiper {
+  height: 400rpx;
+}
+
+.swiperItem {
+  width: 96%;
+  background: #fbfbfb;
+}
+.swiperItem .title {
+  font-size: 30rpx;
+  line-height: 80rpx;
+
+}
+
+.musicItem {
+  /* 当一个元素设置为flex，其子元素会自动成为block元素*/
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.musicItem image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 6rpx;
+}
+
+.musicItem .count {
+  width: 100rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.musicItem .musicName {
+  height: 100rpx;
+  line-height: 100rpx;
+  max-width: 400rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

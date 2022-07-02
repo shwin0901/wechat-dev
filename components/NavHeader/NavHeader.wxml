@@ -1,0 +1,4 @@
+<view class="SongHeader">
+  <text class="left">{{title}}</text>
+  <text class="right">{{nav}}</text>
+</view>

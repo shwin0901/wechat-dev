@@ -1,0 +1,20 @@
+.SongHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24rpx;
+}
+
+.SongHeader .left {
+  font-weight: 400;
+}
+
+.SongHeader .right {
+  width: 100rpx;
+  height: 42rpx;
+  border-radius: 24rpx;
+  border: 1rpx solid rgb(207, 207, 207);
+  text-align: center;
+  line-height: 42rpx;
+  font-size: 24rpx;
+  color: rgb(54, 54, 54);
+}
