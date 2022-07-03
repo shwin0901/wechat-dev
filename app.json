@@ -4,7 +4,8 @@
     "pages/user/user",
     "pages/video/video",
     "pages/logs/logs",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/login/login"
   ],
   "tabBar": {
     "color": "#666666",
@@ -14,7 +15,7 @@
         "pagePath": "pages/home/home",
         "text": "首页",
         "iconPath": "/static/imgae/tab/tab-home.png",
-        "selectedIconPath": "/static/imgae/tab/tab-my-current.png"
+        "selectedIconPath": "/static/imgae/tab/tab-home-current.png"
       },
       {
         "pagePath": "pages/video/video",
