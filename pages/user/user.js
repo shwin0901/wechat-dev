@@ -1,3 +1,4 @@
+import request from '../../utils/request'
 
 let startY = 0; // 手指起始的坐标
 let moveY = 0; // 手指移动的坐标
@@ -19,9 +20,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    let userInfo = wx.getStorageSync('userInfo');
+    if(userInfo){ // 用户登录
+      // 更新userInfo的状态
+      this.setData({
+        userInfo: JSON.parse(userInfo)
+      })
+    this.getRecentPlayList(this.data.userInfo.userId)
+    }
   },
 
+  //获取用户播放记录
+  async getRecentPlayList(uid) {
+    const result = await request('/user/record', {uid, type:0})
+    if(result.code === 200) {
+      const data = result.allData.slice(0, 9)
+      this.setData({
+        recentPlayList: data
+      })
+    }
+  },
+
+  /**
+   * 滚动事件
+   * @param {*} event 
+   */
   handleTouchStart(event){
     this.setData({
       coveTransition: ''
