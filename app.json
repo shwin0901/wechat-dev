@@ -3,7 +3,6 @@
     "pages/home/home",
     "pages/user/user",
     "pages/video/video",
-    "pages/logs/logs",
     "pages/index/index",
     "pages/login/login"
   ],

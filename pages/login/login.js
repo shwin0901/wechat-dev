@@ -46,34 +46,39 @@ Page({
       })
       return
     }
-
-    wx.switchTab({
-      url: '/pages/user/user',
+    wx.showLoading({
+      title: '正在加载'
     })
-
-    // const result = await request('/login/cellphone', {
-    //   phone,
-    //   password,
-    //   isLogin: true
-    // })
-    // if (result.data.code === 200) {
-
-    // } else if (result.data.code === 400) {
-    //   wx.showToast({
-    //     title: '手机号错误',
-    //     icon: 'none'
-    //   })
-    // } else if (result.data.code === 502) {
-    //   wx.showToast({
-    //     title: '密码错误',
-    //     icon: 'none'
-    //   })
-    // } else {
-    //   wx.showToast({
-    //     title: '登录失败，请重新登录',
-    //     icon: 'none'
-    //   })
-    // }
+    const result = await request('/login/cellphone', {
+      phone,
+      password,
+      isLogin: true
+    })
+    if (result.code === 200) {
+      wx.hideLoading();
+      wx.setStorageSync('userInfo', JSON.stringify(result.profile))
+      wx.showToast({
+        title: '登录成功',
+      })
+      wx.switchTab({
+        url: '/pages/user/user',
+      })
+    } else if (result.code === 400) {
+      wx.showToast({
+        title: '手机号错误',
+        icon: 'none'
+      })
+    } else if (result.code === 502) {
+      wx.showToast({
+        title: '密码错误',
+        icon: 'none'
+      })
+    } else {
+      wx.showToast({
+        title: '登录失败，请重新登录',
+        icon: 'none'
+      })
+    }
 
   },
 
