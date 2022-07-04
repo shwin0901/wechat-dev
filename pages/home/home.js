@@ -24,9 +24,9 @@ Page({
     const bannerDatalist = await request('/banner', {
       type: 2
     })
-    if (bannerDatalist && bannerDatalist.data.code === 200) {
+    if (bannerDatalist && bannerDatalist.code === 200) {
       this.setData({
-        bannerList: bannerDatalist.data.banners
+        bannerList: bannerDatalist.banners
       })
     }
   },
@@ -35,34 +35,44 @@ Page({
     const recommendListData = await request('/personalized', {
       limit: 10
     })
-    if (recommendListData && recommendListData.data.code === 200) {
+    if (recommendListData && recommendListData.code === 200) {
       this.setData({
-        recommendList: recommendListData.data.result
+        recommendList: recommendListData.result
       })
     }
   },
 
-  getTopList: async function () {
-    let index = 0;
+  async getTopList() {
     const resultArr = [];
-    while (index < 5) {
-      let topListData = await request('/top/list', {
-        idx: index++
-      });
-      console.log("topListData", topListData)
-      // splice(会修改原数组，可以对指定的数组进行增删改) slice(不会修改原数组)
-      let topListItem = {
-        name: topListData.data.playlist.name,
-        tracks: topListData.data.playlist.tracks.slice(0, 3)
-      };
-      resultArr.push(topListItem);
-      // 不需要等待五次请求全部结束才更新，用户体验较好，但是渲染次数会多一些
-      
-      this.setData({
-        topList: resultArr
+
+    let topListData = await request('/top/playlist', {
+      limit: 6
+    });
+    if (topListData.code === 200) {
+      topListData.playlists.forEach(async item => {
+        const topItemData = await request('/playlist/detail', {
+          id: item.id,
+          s: 3
+        })
+        item.itemList = [];
+        if (topItemData.code === 200) {
+          item.itemList = topItemData.playlist.subscribers
+        }
+        resultArr.push(item)
+        this.setData({
+          topList: resultArr
+        })
       })
     }
-    console.log(this.topList)
+    // console.log("topListData", topListData)
+    // splice(会修改原数组，可以对指定的数组进行增删改) slice(不会修改原数组)
+    // let topListItem = {
+    //   name: topListData.playlist.name,
+    //   tracks: topListData.playlist.tracks.slice(0, 3)
+    // };
+    // resultArr.push(topListItem);
+    // 不需要等待五次请求全部结束才更新，用户体验较好，但是渲染次数会多一些
+
   },
 
   /**
