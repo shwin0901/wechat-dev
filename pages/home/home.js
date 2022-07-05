@@ -64,15 +64,12 @@ Page({
         })
       })
     }
-    // console.log("topListData", topListData)
-    // splice(会修改原数组，可以对指定的数组进行增删改) slice(不会修改原数组)
-    // let topListItem = {
-    //   name: topListData.playlist.name,
-    //   tracks: topListData.playlist.tracks.slice(0, 3)
-    // };
-    // resultArr.push(topListItem);
-    // 不需要等待五次请求全部结束才更新，用户体验较好，但是渲染次数会多一些
+  },
 
+  handleToRecommend() {
+    wx.navigateTo({
+      url: '/pages/recommend/recommend',
+    })
   },
 
   /**

@@ -9,24 +9,24 @@
 
   <!-- 导航图标 -->
   <view class="homeNavContainer">
-    <view class="navIcon">
-      <text class="iconfont iconanquanfuwu"></text>
+    <view class="navIcon" bindtap="handleToRecommend">
+      <text class="iconfont icon-meirituijian"></text>
       <text class="iconText">每日推荐</text>
     </view>
     <view class="navIcon">
-      <text class="iconfont iconwangluoziyuan2"></text>
+      <text class="iconfont icon-gedan1"></text>
       <text class="iconText">私人FM</text>
     </view>
     <view class="navIcon">
-      <text class="iconfont iconfaqishenpi"></text>
+      <text class="iconfont icon-icon-ranking"></text>
       <text class="iconText">歌单</text>
     </view>
     <view class="navIcon">
-      <text class="iconfont iconfaqigongdan"></text>
+      <text class="iconfont icon-diantai"></text>
       <text class="iconText">排行榜</text>
     </view>
     <view class="navIcon">
-      <text class="iconfont icondingdanguanli1"></text>
+      <text class="iconfont icon-zhiboguankanliangbofangsheyingshexiangjixianxing"></text>
       <text class="iconText">有声书</text>
     </view>
   </view>
