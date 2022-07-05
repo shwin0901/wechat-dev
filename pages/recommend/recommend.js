@@ -1,3 +1,4 @@
+import PubSub from 'pubsub-js'
 import request from '../../utils/request'
 
 Page({
@@ -9,6 +10,7 @@ Page({
     day: new Date().getDate(),
     month: new Date().getMonth() + 1,
     recommendList: [],
+    index: 0,
   },
 
   /**
@@ -28,7 +30,27 @@ Page({
       })
     }
 
-    this.getRecommendList()
+    this.getRecommendList();
+
+    // 订阅来自songDetail页面发布的消息
+    PubSub.subscribe('switchType', (msg, type) => {
+      let {recommendList, index} = this.data;
+      if(type === 'pre'){
+        (index === 0) && (index = recommendList.length);
+        index -= 1;
+      }else {
+        (index === recommendList.length - 1) && (index = -1);
+        index += 1;
+      }
+      
+      // 更新下标
+      this.setData({
+        index
+      })
+      
+      let musicId = recommendList[index].id;
+      PubSub.publish('musicId', musicId)
+    });
   },
 
   async getRecommendList() {
@@ -41,10 +63,13 @@ Page({
   },
 
   toSongDetail(event) {
-    const musicId = event.currentTarget.dataset.musicid
-    console.log('musicId', musicId)
+    const { musicid, index } = event.currentTarget.dataset;
+    this.setData({
+      index
+    })
+
     wx.navigateTo({
-      url: '/pages/songDetail/songDetail?musicId=' + musicId,
+      url: '/pages/songDetail/songDetail?musicId=' + musicid,
     })
   },
 
