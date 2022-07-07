@@ -57,15 +57,15 @@
         <text class="nickName">{{item.data.creator.nickname}}</text>
         <view class="comments_praised">
           <text class="item">
-            <text class="iconfont icon-buoumaotubiao15"></text>
+            <text class="iconfont iconpingtaifuwu"></text>
             <text class="count">{{item.data.praisedCount}}</text>
           </text>
           <text class="item">
-            <text class="iconfont icon-pinglun1"></text>
+            <text class="iconfont iconpingtaifuwu"></text>
             <text class="count">{{item.data.commentCount}}</text>
           </text>
           <button open-type="share" class="item btn">
-            <text class="iconfont icon-gengduo"></text>
+            <text >==</text>
           </button>
         </view>
       </view>
