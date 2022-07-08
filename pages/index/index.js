@@ -1,4 +1,4 @@
-// 
+import request from '../../utils/request'
 
 Page({
 
@@ -8,12 +8,23 @@ Page({
   data: {
     msg: '单项数据绑定',
     userInfo: {},
+    exampleInfo: {
+      name: 'wechat',
+      age: 26
+    }
   },
 
   //页面跳转
   handleClick(e) {
-    wx.redirectTo({
-      url: '/pages/home/home',
+    // wx.redirectTo({
+    //   url: '/pages/home/home',
+    // })
+    wx.login({
+      success: async (res) => {
+        console.log(res)
+        const result = await request('/getOpenId', {code: res.code})
+        console.log(';result', result) //token jwt
+      }
     })
   },
 

@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<import src="/template/example/example.wxml" />
 <view class="container">
   <view wx:if="{{userInfo.avatarUrl}}" class="userInfo">
     <image class="indexImg" src="{{userInfo.avatarUrl}}"></image>
@@ -6,6 +7,8 @@
   </view>
 
   <button wx:else bindtap="getUserProfile">获取用户信息</button>
+  
+  <template is="example-template" data="{{...exampleInfo}}"></template>
 
   <view>
     <button catchtap="handleClick">hello world</button>
