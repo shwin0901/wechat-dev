@@ -1,4 +1,5 @@
 const host = "http://127.0.0.1:3000"
+const mobileHost = "http://test.vaiwan.cn"
 
 export default (url, data = {}, method = "GET", isLogin) => {
   return new Promise((resolve, reject) => {
