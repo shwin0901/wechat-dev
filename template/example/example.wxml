@@ -1,0 +1,6 @@
+<template name="example-template">
+  <view class="example-style">
+    <text>name: {{name}}</text>
+    <text>age: {{age}}</text>
+  </view>
+</template>
