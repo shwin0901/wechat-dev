@@ -1,9 +1,12 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/recommend/recommend",
+    "pages/songDetail/songDetail",
     "pages/user/user",
     "pages/video/video",
     "pages/index/index",
+    "pages/search/search",
     "pages/login/login"
   ],
   "tabBar": {
@@ -37,5 +40,8 @@
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes": [
+    "audio"
+  ]
 }
